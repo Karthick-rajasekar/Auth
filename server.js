@@ -1,17 +1,21 @@
 const express = require('express')
 const cors = require('cors')
-const cookieParse = require("cookie-parser")
+//const cookieParse = require("cookie-parser")
 
 const app = express()
 app.use(express.json())
-app.use(cors({origin:"http://127.0.0.1/5500",credentials:true}))
-app.use(cookieParse())
+app.use(cors({origin:"http://128.0.0.1:5500",credentials:true}))
+//app.use(cookieParse())
 
 const USERS = new Map()
 USERS.set("WDS",{id:1,username:"WDS",role:"Admin"})
 USERS.set("Kyle",{id:2,username:"Kyle",role:"User"})
 
 const SESSIONS = new Map();
+
+app.get("/",(req,res)=> {
+    res.send("helo")
+})
 
 app.post("/login",(req,res) => {
     const user = USERS.get(req.body.username)

@@ -25,18 +25,22 @@ loginAsKyleBtn.addEventListener('click',()=> {
 
     }).then(res => res.text())
       .then(data => responsesDiv.textContent = data)
+      .then(error => console.log('error:', error))
   })
 
   function login(username) {
     fetch("https://localhost:3000/login", {
+        method: "get",
         credentials:"include",
         headers: {
             "Content-Type": "application/json",
+            "user" : JSON.stringify({ username })
          },
-         body : JSON.stringify({ username })
+       
         }).then(res => res.text())
           .then(data => {
             responsesDiv.textContent = data;
-          })
+            })
+          .then(error => console.log('Error :', error))
         
   }
