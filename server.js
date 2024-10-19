@@ -4,7 +4,7 @@ const cors = require('cors')
 
 const app = express()
 app.use(express.json())
-app.use(cors({origin:"http://128.0.0.1:5500",credentials:true}))
+app.use(cors({origin:"http://127.0.0.1:5500", credentials:true}))
 //app.use(cookieParse())
 
 const USERS = new Map()
@@ -18,7 +18,7 @@ app.get("/",(req,res)=> {
 })
 
 app.post("/login",(req,res) => {
-    const user = USERS.get(req.body.username)
+    const user = USERS.get(req.header.username)
     if(user == null){
         res.sendStatus(401)
         return

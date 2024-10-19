@@ -34,7 +34,7 @@ loginAsKyleBtn.addEventListener('click',()=> {
         credentials:"include",
         headers: {
             "Content-Type": "application/json",
-            "user" : JSON.stringify({ username })
+            "username" : JSON.stringify({ username })
          },
        
         }).then(res => res.text())
